@@ -149,9 +149,7 @@ def Judge(args):
             print '[Done] Port scan done ,The result is saved in Output/PortScan_result.html.'
 
         elif args.File_Ip_Domain is not None and args.Host_Url is None:
-            outfile = Process_scan(args)
-            print '[Done] Port scan done ,The result is saved in %s.' % (outfile)
-
+            Process_scan(args)
         else:
             print '[ERROR] You Must order an ip , -H ip | -r ip.txt'
             sys.exit(0)
