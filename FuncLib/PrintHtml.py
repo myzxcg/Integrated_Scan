@@ -19,11 +19,11 @@ def deal(url, judge_port, html_port_str):
         'Cache-Control': 'no-cache',
     }
     if judge_port is True:
-    	try:
-	        url1 = 'http://' + url
-	        status = requests.get(url1,headers=headers).status_code
-	    except requests.exceptions.RequestException:
-        	pass  
+	try:
+        url1 = 'http://' + url
+        status = requests.get(url1,headers=headers).status_code
+    except requests.exceptions.RequestException:
+    	pass  
     html_host = Template(TempleteHtml_nmap.html['host'])
     html_host_str = html_host.substitute(status=status, url=url, content2=html_port_str)
     return html_host_str
