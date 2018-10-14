@@ -97,11 +97,11 @@ def run_process(args,iplist):
 def run_one(args):
     html_str = ['']
     html_general = Template(html['general'])
+    iplist = []
+    output = 'Output/'
+    if not os.path.exists(output):
+        os.makedirs(output)
     if '/' in args.Host_Url:
-        iplist = []
-        output = 'Output/'
-        if not os.path.exists(output):
-            os.makedirs(output)
         with open('Output/PortScan_result.txt', 'w+') as f:
             reip = re.search(r'(\d+\.\d+\.\d+\.)', args.Host_Url)
             if reip is not None:
