@@ -35,7 +35,7 @@ def Sub_html_print(url,ips):
 	try:
 	    url1='http://'+url
 	    status=requests.head(url1,headers=headers).status_code
-	except requests.exceptions.ConnectionError,requests.exceptions.Timeout:
+	except requests.exceptions.RequestException:
 	    pass
 	finally:
 	    html_host_str+=html_host.substitute(status=status,url=url,content2=html_ip_str)
