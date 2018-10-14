@@ -11,10 +11,19 @@ requests.adapters.DEFAULT_RETRIES = 3
 
 # nmap
 def deal(url, judge_port, html_port_str):
-    status = 404
+    status = 'Click'
+    headers = {
+        'Accept': '*/*',
+        'Referer': 'http://www.baidu.com',
+        'User-Agent': 'Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.1; ',
+        'Cache-Control': 'no-cache',
+    }
     if judge_port is True:
-        url1 = 'http://' + url
-        status = requests.get(url1).status_code
+    	try:
+	        url1 = 'http://' + url
+	        status = requests.get(url1,headers=headers).status_code
+	    except requests.exceptions.RequestException:
+        	pass  
     html_host = Template(TempleteHtml_nmap.html['host'])
     html_host_str = html_host.substitute(status=status, url=url, content2=html_port_str)
     return html_host_str
