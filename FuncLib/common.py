@@ -82,7 +82,7 @@ def load_next_sub(args):
 
 
 def get_out_file_name_txt(target, args):
-    output = 'Output/'
+    output = 'Output/txt/'
     if not os.path.exists(output):
         os.makedirs(output)
     if args.output is not None:
@@ -96,7 +96,7 @@ def get_out_file_name_txt(target, args):
     return outfile
 
 def get_out_file_name_html(target, args):
-    output = 'Output/'
+    output = 'Output/html/'
     if not os.path.exists(output):
         os.makedirs(output)
     if args.output is not None:

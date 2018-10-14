@@ -27,7 +27,10 @@ def submodule(args):
 
 
 def dirscanmodule(args):
-    output = 'Output/'
+    output = 'Output/txt/'
+    if not os.path.exists(output):
+        os.makedirs(output)
+    output = 'Output/html/'
     if not os.path.exists(output):
         os.makedirs(output)
     try:
@@ -46,7 +49,7 @@ def snmodule(args):
     SubBlasting.sb_main(args, args.Host_Url)
 
     allchose.sub_dealip(args.Host_Url, args)
-    args.ip_file = 'tmp/%s_ip.txt' % (args.Host_Url)
+    args.File_Ip_Domain = 'tmp/%s_ip.txt' % (args.Host_Url)
     NmapScan.Judge(args)
     print '[Done] The sub blasting and PortScan scan all done.'
 
@@ -86,6 +89,6 @@ if __name__ == '__main__':
     elif args.all is True:
         allmoudle(args)
     #删除tmp目录
-    if os.path.exists('tmp/'):
-        __import__('shutil').rmtree('tmp/')
+    # if os.path.exists('tmp/'):
+    #     __import__('shutil').rmtree('tmp/')
     print '[All Done] All used %s s' % (time.time() - start)

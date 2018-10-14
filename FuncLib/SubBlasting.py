@@ -145,7 +145,6 @@ class SubNameBrute:
                         self.queue_size_list[self.process_num] = self.queue.qsize()
                         self.local_time = time.time()
 
-                    #msg = cur_sub_domain.ljust(30) + ips
                     self.outfile_html.write(PrintHtml.Sub_html_print(cur_sub_domain,ips))
                     self.outfile_html.flush()
                     self.outfile.write(cur_sub_domain.ljust(30) + '\t' + ips + '\n')

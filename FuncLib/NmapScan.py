@@ -69,13 +69,19 @@ class nmap_scan:
 def run_process(args,iplist):
     html_general = Template(html['general'])
     html_str=['']
-    output = 'Output/'
+
+    output = 'Output/txt/'
     if not os.path.exists(output):
         os.makedirs(output)
+    output = 'Output/html/'
+    if not os.path.exists(output):
+        os.makedirs(output)
+
+
     _str = args.File_Ip_Domain.split('.')[0].split('\\')[-1]
     if '/' in _str:
         _str = _str.split('/')[1]
-    outfile = 'Output/%s_ip.txt' % (_str)
+    outfile = 'Output/txt/%s_ip.txt' % (_str)
     if args.output is not None:
         outfile = output + args.output
     newnmap = nmap_scan(args,iplist)
@@ -84,8 +90,9 @@ def run_process(args,iplist):
         gevent.joinall(x)
 
     print '[Done] Port scan done ,The result is saved in %s.' % (outfile)
+
     #写到html中
-    outfile = 'Output/%s_ip.html' % (_str)
+    outfile = 'Output/html/%s_ip.html' % (_str)
     if args.output is not None:
         outfile = output + args.output.split('.')[0]+'.html'
     with open(outfile,'w+') as f:
@@ -98,11 +105,16 @@ def run_one(args):
     html_str = ['']
     html_general = Template(html['general'])
     iplist = []
-    output = 'Output/'
+
+    output = 'Output/txt/'
     if not os.path.exists(output):
         os.makedirs(output)
+    output = 'Output/html/'
+    if not os.path.exists(output):
+        os.makedirs(output)
+
     if '/' in args.Host_Url:
-        with open('Output/PortScan_result.txt', 'w+') as f:
+        with open('Output/txt/ip_result.txt', 'w+') as f:
             reip = re.search(r'(\d+\.\d+\.\d+\.)', args.Host_Url)
             if reip is not None:
                 for i in range(256):
@@ -117,7 +129,7 @@ def run_one(args):
         newnmap.nscan(args.Host_Url,html_str)
 
     #写到html中
-    with open('Output/PortScan_result.html','w+') as f:
+    with open('Output/html/ip_result.html','w+') as f:
         f.write(html_general.substitute(content1=html_str[0]))
 
 
@@ -145,13 +157,13 @@ def Judge(args):
     try:
         if args.File_Ip_Domain is None and args.Host_Url is not None:
             run_one(args)
-            print '[Done] Port scan done ,The result is saved in Output/PortScan_result.txt.'
-            print '[Done] Port scan done ,The result is saved in Output/PortScan_result.html.'
+            print '[Done] Port scan done ,The result is saved in Output/txt/ip_result.txt.'
+            print '[Done] Port scan done ,The result is saved in Output/html/ip_result.html.'
 
-        elif args.File_Ip_Domain is not None and args.Host_Url is None:
+        elif args.File_Ip_Domain is not None:
             Process_scan(args)
         else:
-            print '[ERROR] You Must order an ip , -H ip | -r ip.txt'
+            print '[ERROR] You Must order an ip , -u ip | -r ip.txt'
             sys.exit(0)
 
     except KeyboardInterrupt:
