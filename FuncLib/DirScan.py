@@ -42,7 +42,7 @@ class Dirscan:
         html_content = 0
         try:
             html_content = requests.get(url, headers=self.headers, allow_redirects=False, timeout=30)
-        except requests.exceptions.ConnectionError,requests.exceptions.Timeout:
+        except requests.exceptions.RequestException:
             pass
         finally:
             if html_content != 0:
