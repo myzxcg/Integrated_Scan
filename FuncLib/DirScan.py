@@ -77,8 +77,8 @@ def dir_S(args, url):
         x = [gevent.spawn(newdirscan.run,html_Host_str) for i in range(200)]
         gevent.joinall(x)
     print "[Done] '%s' dirscan done" % (url)
-    print 'The result is saved in Output/txt/%s_dirscan.txt' % (url)
+    print '[Attention] The result is saved in Output/txt/%s_dirscan.txt' % (url)
     with open('Output/html/%s_dirscan.html' % (url), 'w+') as f:
         f.write(html_general.substitute(content1=html_Host_str[0]))
-    print 'The result is saved in Output/html/%s_dirscan.html' % (url)
+    print '[Attention] The result is saved in Output/html/%s_dirscan.html' % (url)
 

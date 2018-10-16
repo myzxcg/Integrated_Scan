@@ -238,7 +238,7 @@ def sb_main(args, domain):
             with open(_file, 'r') as tmp_f:
                 content = tmp_f.read()
             f.write(content)
-    print '[Done] The sub blasting result is saved in %s' % out_file_name
+    print '[Attention] The sub blasting result is saved in %s' % out_file_name
 
     out_file_name=get_out_file_name_html(domain,args)
     with open(out_file_name,'w+') as f:
@@ -246,4 +246,4 @@ def sb_main(args, domain):
             with open(_file, 'r') as tmp_f:
                 html_host_str+=tmp_f.read()
         f.write(html_general.substitute(content1=html_host_str))
-    print '[Done] The sub blasting result is saved in %s' % out_file_name
+    print '[Attention] The sub blasting result is saved in %s' % out_file_name

@@ -89,7 +89,7 @@ def run_process(args,iplist):
         x = [gevent.spawn(newnmap.run_scan, f,html_str) for _ in range(args.process + 1)]
         gevent.joinall(x)
 
-    print '[Done] Port scan done ,The result is saved in %s.' % (outfile)
+    print '[Attention] Port scan done ,The result is saved in %s.' % (outfile)
 
     #写到html中
     outfile = 'Output/html/%s_ip.html' % (_str)
@@ -98,7 +98,7 @@ def run_process(args,iplist):
     with open(outfile,'w+') as f:
         f.write(html_general.substitute(content1=html_str[0]))
 
-    print '[Done] Port scan done ,The result is saved in %s.' % (outfile)
+    print '[Attention] Port scan done ,The result is saved in %s.' % (outfile)
 
 
 def run_one(args):
@@ -157,8 +157,8 @@ def Judge(args):
     try:
         if args.File_Ip_Domain is None and args.Host_Url is not None:
             run_one(args)
-            print '[Done] Port scan done ,The result is saved in Output/txt/ip_result.txt.'
-            print '[Done] Port scan done ,The result is saved in Output/html/ip_result.html.'
+            print '[Attention] Port scan done ,The result is saved in Output/txt/ip_result.txt.'
+            print '[Attention] Port scan done ,The result is saved in Output/html/ip_result.html.'
 
         elif args.File_Ip_Domain is not None:
             Process_scan(args)
