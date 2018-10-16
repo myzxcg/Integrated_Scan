@@ -88,7 +88,7 @@ if __name__ == '__main__':
 
     elif args.all is True:
         allmoudle(args)
-    #删除tmp目录
-    # if os.path.exists('tmp/'):
-    #     __import__('shutil').rmtree('tmp/')
+   # 删除tmp目录
+    if os.path.exists('tmp/'):
+        __import__('shutil').rmtree('tmp/')
     print '[All Done] All used %s s' % (time.time() - start)
