@@ -78,6 +78,9 @@ def Judge_Input(parser, args):
         if args.Host_Url is None:
             print "You Should use '-u' to specify a target!"
             sys.exit(0)
+        if args.Host_Url.startswith('http://') or args.Host_Url.startswith('https://'):
+        	print "You must delete 'http://' or 'https://' at '-u' and try again!"
+        	sys.exit(0)
     else:
         print '[ERROR] No module name.'
         sys.exit(0)
