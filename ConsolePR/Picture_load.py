@@ -2,6 +2,7 @@
 # 随机加载图片
 import random
 import sys
+
 from pyfiglet import Figlet
 
 
@@ -21,7 +22,8 @@ class ProgressBar:
         sys.stdout.flush()
         progress = self.width * self.count / self.total
         sys.stdout.write('{0} / 100% '.format(s))
-        sys.stdout.write('<' + '*' * progress + '-' * (self.width - progress) + '>' + '\r')
+        sys.stdout.write('<' + '*' * progress + '-' *
+                         (self.width - progress) + '>' + '\r')
 
         if progress == self.width:
             sys.stdout.write('\n')

@@ -41,7 +41,7 @@ def dirscanmodule(args):
 
 # 扫子域名和端口
 def snmodule(args):
-    
+
     args.intranet = True
     if args.output is not None:
         print '[Warning] This module does not support -o ,Will use The default directory is Output/.... '
@@ -64,7 +64,7 @@ def allmoudle(args):
 
 if __name__ == '__main__':
     bar = ProgressBar(total=10)
-    for i in range(0,100,11):
+    for i in range(0, 100, 11):
         bar.move()
         bar.log(str(i)+'%')
         time.sleep(0.1)
